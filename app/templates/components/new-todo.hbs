@@ -1,0 +1,17 @@
+<button {{action "showInput"}}><span>+</span></button>
+
+{{#if showInput}}
+<div class="overh">
+    <div class="popup">
+        <div class="head">
+            <h3>הוספת משימה</h3>
+            <button {{action "showInput" }}>X</button>
+        </div>
+        <div class="body">
+            <label>הכנס משימה:</label>
+            {{input type='text' value=todo}}
+            <button {{action 'submit'}}>הוסף</button>
+        </div>
+    </div>
+</div>
+{{/if}}

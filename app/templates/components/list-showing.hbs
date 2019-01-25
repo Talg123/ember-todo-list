@@ -1,0 +1,32 @@
+<ul class="listOfTodo">
+{{#each this.list as |singleTodo key|}}
+    <li>
+        <div>
+            {{input type="checkbox" change=(action 'updateComplete' singleTodo) checked=singleTodo.is_completed }}
+            {{#unless singleTodo.editMode}}
+                <h4 class="{{if singleTodo.is_completed 'done'}}">
+                    {{increment-index key}}.
+                    {{singleTodo.content}}
+                </h4>
+            {{else}}
+                {{input type="text" value=singleTodo.content}}
+            {{/unless}}
+        </div>
+        <div>
+            <button class="removeBtn" {{action 'changeEditMode' singleTodo}}>
+                {{#if singleTodo.editMode}}
+                Done
+                {{else}}
+                Edit
+                {{/if}}
+            </button>
+            <button class="removeBtn" {{action 'removeFromList' singleTodo}}>X</button>
+        </div>
+    </li>
+{{/each}}
+</ul>
+<div class="jcsb">
+    <h5>לסיום: {{listUnCompleted}}</h5>
+    <h5>הושלמו: {{listCompleted}}</h5>
+    <h5>סה"כ: {{list.length}}</h5>
+</div>
